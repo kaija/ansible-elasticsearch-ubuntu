@@ -1,0 +1,7 @@
+---
+- name: Elasticsearch common
+  hosts:
+    - elasticsearch_nodes
+  become: yes
+  roles:
+  - { role: elasticsearch, tags: ['elasticsearch'] }

@@ -1,0 +1,6 @@
+---
+- name: Elasticsearch service
+  service: name=elasticsearch state=started enabled=yes
+
+#- name: elasticsearch service
+#  systemd: name=elasticsearch daemon-reload=yes enabled=yes

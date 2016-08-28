@@ -1,0 +1,6 @@
+---
+es_data_dir: /data/elasticsearch/
+es_user: elasticsearch
+es_group: elasticsearch
+es_home: /usr/share/elasticsearch/
+es_max_open_files: 65535

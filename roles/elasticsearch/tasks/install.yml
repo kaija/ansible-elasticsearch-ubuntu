@@ -1,0 +1,25 @@
+---
+- name: Install Oracle Java PPA
+  apt_repository: repo='ppa:webupd8team/java' state=present
+  register: ppastable
+
+- name: Accept Java 8 License
+  become: yes
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Install Oracle Java 8
+  become: yes
+  apt: name={{item}} state=latest
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+
+- name: Install Elasticsearch Repository
+  apt_key: url="http://packages.elasticsearch.org/GPG-KEY-elasticsearch" state=present
+
+- name: Install apt source list
+  apt_repository: repo="deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" state=present
+
+- name: Install elasticsearch
+  apt: name=elasticsearch=2.3.5 state=present
