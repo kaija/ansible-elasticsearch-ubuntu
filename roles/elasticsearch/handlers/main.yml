@@ -2,3 +2,6 @@
 
 - name: reload systemd
   command: systemctl daemon-reload
+
+- name: update apt
+  apt: update_cache=yes
